@@ -16,7 +16,7 @@ const Login = ({setData}) => {
         axios.post("https://mdkhalilul-dobby-api.vercel.app/login",user)
             .then(res=>{
                 setData(res.data.user);
-                navigate('https://mdkhalilul-dobby.vercel.app/home');
+                navigate('/home');
             })
             .catch(err=>console.log(err))
     }
