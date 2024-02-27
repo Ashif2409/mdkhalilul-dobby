@@ -9,7 +9,6 @@ const port = 8080;
 const bcrypt = require('bcrypt');
 
 
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         const uploadDir = 'uploads/';
