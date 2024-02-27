@@ -22,7 +22,7 @@ export const Reg = () => {
         const { email, name, password, confirmPass } = user;
         if (email && name && password && confirmPass) {
             if (password === confirmPass) {
-                axios.post('http://localhost:8080/register', user)
+                axios.post('https://mdkhalilul-dobby-api.vercel.appregister', user)
                     .then(res => {
                         navigate('/');
                         console.log('Successfully Register');
