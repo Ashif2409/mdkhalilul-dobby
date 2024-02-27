@@ -11,6 +11,7 @@ export const Home = ({ data }) => {
     const [files, setFiles] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
+    axios.defaults.withCredentials = true;
     const handleFile = (e) => {
         const selectedFiles = Array.from(e.target.files);
         setFiles(selectedFiles);
@@ -21,7 +22,7 @@ export const Home = ({ data }) => {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8080/images")
+        axios.get("https://mdkhalilul-dobby-api.vercel.app/images")
             .then(response => {
                 setImgDetails(prevState => ({
                     ...prevState,
@@ -45,7 +46,7 @@ export const Home = ({ data }) => {
         formData.append('name', text);
         formData.append('userId', data._id);
 
-        axios.post('http://localhost:8080/imgDetail', formData, {
+        axios.post('https://mdkhalilul-dobby-api.vercel.app/imgDetail', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
