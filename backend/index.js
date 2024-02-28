@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-mongoose.connect("mongodb+srv://ashif:<ashif@786>@cluster0.q7r9p4z.mongodb.net/imgUpload?retryWrites=true&w=majority&appName=Cluster0").then(res => {
+mongoose.connect("mongodb+srv://ashif:ashif@786@cluster0.q7r9p4z.mongodb.net/imgUpload?retryWrites=true&w=majority").then(res => {
     console.log("Successfully db Connected");
 }).catch(err => console.log(err));
 
@@ -101,12 +101,12 @@ app.post('/register', async (req, res) => {
         res.send("Error in registration");
     }
 });
-app.options('/login', cors());
+// app.options('/login', cors());
 app.post('/login', async (req, res) => {
     const { name, password } = req.body;
     try {
         const existingUser = await User.findOne({ name: name });
-        res.send('hello');
+        // res.send('hello');
         if (existingUser) {
             storedHashedPassword = existingUser.password;
             const isMatch = await verifyPassword(password, storedHashedPassword);
@@ -157,6 +157,6 @@ app.get('/images', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+app.listen(PORT , () => {
     console.log("Backend is Connected");
 });
