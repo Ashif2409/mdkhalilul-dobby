@@ -5,7 +5,7 @@ const fs = require('fs');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors')
-const port = 8080;
+const PORT = process.env.PORT || 8080;
 const bcrypt = require('bcrypt');
 
 
@@ -101,12 +101,12 @@ app.post('/register', async (req, res) => {
         res.send("Error in registration");
     }
 });
-
+app.options('/login', cors());
 app.post('/login', async (req, res) => {
     const { name, password } = req.body;
     try {
         const existingUser = await User.findOne({ name: name });
-
+        res.send('hello');
         if (existingUser) {
             storedHashedPassword = existingUser.password;
             const isMatch = await verifyPassword(password, storedHashedPassword);
