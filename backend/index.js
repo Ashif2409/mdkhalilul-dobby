@@ -104,24 +104,25 @@ app.post('/register', async (req, res) => {
 // app.options('/login', cors());
 app.post('/login', async (req, res) => {
     const { name, password } = req.body;
-    try {
-        const existingUser = await User.findOne({ name: name });
-        // res.send('hello');
-        if (existingUser) {
-            storedHashedPassword = existingUser.password;
-            const isMatch = await verifyPassword(password, storedHashedPassword);
-            if (isMatch) {
-                res.send({ message: "Welcome to the Book Recommendation app", user: existingUser });
-            } else {
-                console.log("Your Pasword is Wrong");
-            }
-        } else {
-            console.log('User not found');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
+    res.send('hello')
+    // try {
+    //     const existingUser = await User.findOne({ name: name });
+    //     // res.send('hello');
+    //     if (existingUser) {
+    //         storedHashedPassword = existingUser.password;
+    //         const isMatch = await verifyPassword(password, storedHashedPassword);
+    //         if (isMatch) {
+    //             res.send({ message: "Welcome to the Book Recommendation app", user: existingUser });
+    //         } else {
+    //             console.log("Your Pasword is Wrong");
+    //         }
+    //     } else {
+    //         console.log('User not found');
+    //     }
+    // } catch (error) {
+    //     console.error('Error:', error);
+    //     res.status(500).send('Internal Server Error');
+    // }
 });
 
 app.post('/imgDetail', upload.array('images', 10), async (req, res) => {
