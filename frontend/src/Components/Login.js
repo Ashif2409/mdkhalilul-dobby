@@ -13,7 +13,7 @@ const Login = ({setData}) => {
     const handleSubmit=(e)=>{
         e.preventDefault();  
         const {name,password}=user;
-        axios.post("https://mdkhalilul-dobby-api.vercel.app/login",user)
+        axios.post("https://mdkhalilul-dobby.onrender.com/login",user)
             .then(res=>{
                 setData(res.data.user);
                 navigate('/home');
